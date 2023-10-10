@@ -92,9 +92,9 @@ def verify(authority, request):
     if response.status_code == 200:
         response = response.json()
         if response['Status'] == 100:
-        	user = request.user
-        	user.subscription = datetime.now() + timedelta(days=30)
-        	user.save()
+            user = request.user
+            user.subscription = datetime.now() + timedelta(days=30)
+            user.save()
             return {'status': True, 'RefID': response['RefID']}
         else:
             return {'status': False, 'code': str(response['Status'])}

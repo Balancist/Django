@@ -127,7 +127,7 @@ class Serie(models.Model):
 	season = models.IntegerField(default=0, verbose_name='تعداد فصول')
 	status = models.CharField(max_length=1, choices=STATUS_CHOICES, verbose_name='وضعیت')
 	company = models.ManyToManyField(Company, verbose_name='شرکت', related_name='series')
-	stream = models.ForeignKey(Stream, on_delete=models.CASCADE, verbose_name='پخش کننده')
+	stream = models.ForeignKey(Stream, on_delete=models.CASCADE, verbose_name='پخش کننده', related_name='series')
 	poster = models.ImageField(upload_to='image/film/serie', verbose_name='پوستر')
 
 	class Meta:

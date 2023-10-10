@@ -1,16 +1,15 @@
 {% extends 'home/base.html' %}
-
 {% load static %}
 
 {% block title %}
-{{company.name}}
+<title>{{company.name}}</title>
 {% endblock %}
 
 {% block body %}
 <img src="{{company.logo.url}}">
 <h1>{{company.name}}</h1>
-works from: {{company.year}}<br>
-some of its productions are:
+تاسیس شده در: {{company.year}}<br>
+بخشی از ساخته ها::
 {% for film in company.films.all %}
 <ul>
     <li>

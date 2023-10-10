@@ -1,5 +1,4 @@
 {% extends 'home/base.html' %}
-
 {% load static %}
 
 {% block head %}
@@ -9,7 +8,7 @@
 {% block body %}
 <img src="{{film.poster.url}}">
 <h1>{{film.title}}</h1>
-Company:
+شرکت سازنده:
 {% for company in film.company.all %}
 <ul>
 	<li>
@@ -17,6 +16,6 @@ Company:
 	</li>
 </ul>
 {% endfor %}
-Release year: {{film.year}}<br>
-Genre: {{film.genre_to_str}}
+سال انتشار: {{film.year}}<br>
+ژانر: {{film.genre_to_str}}
 {% endblock %}
