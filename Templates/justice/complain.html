@@ -1,0 +1,17 @@
+{% extends 'home/base.html' %}
+{% load widget_tweaks %}
+
+{% block head %}
+<title>شکایت</title>
+{% endblock %}
+
+{% block body %}
+<form method="post" enctype="multipart/form-data" class="login-form">
+	{% csrf_token %}
+	{% for field in form %}
+		<label for="field" class="form form-label">{{field.name}}</label>
+		{% render_field field class="login-form" %}
+	{% endfor %}
+	<button type="submit" class="btn btn-outline-info">ثبت</button>
+</form>
+{% endblock %}

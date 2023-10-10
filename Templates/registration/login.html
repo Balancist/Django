@@ -1,0 +1,29 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load crispy_forms_tags %}
+
+{% block head %}
+<title>ورود</title>
+{% endblock %}
+
+{% block body %}
+<form method="post" class="h5">{% csrf_token %}
+	<div class="container text-center">
+		<div class="row">
+			<div class="col-4 mx-auto">
+				{{form.username|as_crispy_field}}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-4 mx-auto">
+				{{form.password|as_crispy_field}}
+			</div>
+		</div>
+		<hr class="my-3">
+		<div>
+			<button type="submit" class="btn btn-outline-info">ورود</button>
+		</div>
+	</div>
+</form>
+{% endblock %}

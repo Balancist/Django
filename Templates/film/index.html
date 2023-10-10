@@ -1,0 +1,28 @@
+{% extends 'home/base.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>فیلم</title>
+{% endblock %}
+
+{% block body %}
+<div>
+    <h2 class="ps-2">فیلم ها</h2>
+    {% for film in films %}
+    <ul>
+        <li>
+            <a href="{% url 'Film:film_detail' film.slug %}">{{film.title}}</a>
+        </li>
+    </ul>
+    {% endfor %}
+    <h2 class="ps-2">سریال ها</h2>
+    {% for serie in series %}
+    <ul>
+        <li>
+            <a href="{% url 'Film:serie_detail' serie.slug %}">{{serie.title}}</a>
+        </li>
+    </ul>
+    {% endfor %}
+</div>
+{% endblock %}

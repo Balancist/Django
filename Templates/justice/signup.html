@@ -1,0 +1,42 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block head %}
+<title>ثبت نام</title>
+{% endblock %}
+
+{% block body %}
+<h3 class="alert alert-info text-center m-4 mt-2">ثبت نام</h3>
+<form method="post" class="h5">{% csrf_token %}
+    <div class="container">
+        <div class="row">
+            <div class="col-4 h5">
+                {{form.username|as_crispy_field}}
+            </div>
+            <div class="col-4 h5">
+                {{form.password1|as_crispy_field}}
+            </div>
+            <div class="col-4 h5">
+                {{form.password2|as_crispy_field}}
+            </div>
+            <div class="col-11 mx-auto alert alert-danger text-center">
+                در صورتی که اطلاعات اشتباه وارد کنید، مورد پیگرد قرار خواهید گرفت
+            </div>
+            <div class="col-4">
+                {{form.first_name|as_crispy_field}}
+            </div>
+            <div class="col-4">
+                {{form.last_name|as_crispy_field}}
+            </div>
+            <div class="col-4">
+                {{form.phone_number|as_crispy_field}}
+            </div>
+        </div>
+        <hr class="my-3">
+        <div class="text-center">
+            <button type="submit" class="btn btn-outline-info">ثبت نام</button>
+        </div>
+    </div>
+</form>
+{% endblock %}

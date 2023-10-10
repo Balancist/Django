@@ -1,0 +1,22 @@
+{% extends 'home/base.html' %}
+
+{% load static %}
+
+{% block head %}
+<title>عدالت</title>
+{% endblock %}
+
+{% block body %}
+<ul>
+	{% for crime in object_list %}
+		{% if crime.field == None %}
+			<li>
+				<a href="{% url 'Justice:crime' crime.slug %}">{{crime.name}}</a>
+				{% if crime.subfields.all %}
+					{% include 'justice/partials/crime_loop.html' %}
+				{% endif %}
+			</li>
+		{% endif %}
+	{% endfor %}
+</ul>
+{% endblock %}

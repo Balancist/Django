@@ -1,0 +1,16 @@
+{% extends 'home/base.html' %}
+
+{% load static %}
+
+{% block head %}
+<title>ثبت نام</title>
+{% endblock %}
+
+{% block body %}
+<div class="container signup-form">
+    <form method="post">{% csrf_token %}
+        <label for="fname" class="form form-label">پاک؟</label>
+        <button type="submit" class="btn btn-outline-info">تایید</button>
+    </form>
+</div>
+{% endblock %}

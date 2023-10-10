@@ -1,0 +1,9 @@
+{% for crime in crime.subfield %}
+		<li>
+			<a href="{% url 'Justice:crime' crime.slug %}">{{crime.name}}</a>
+			{% if crime.subfields.all %}
+				{% include 'justice/partials/crime_loop.html' %}
+			{% endif %}
+		</li>
+	{% endfor %}
+</ul>

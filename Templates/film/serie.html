@@ -1,0 +1,11 @@
+{% extends 'home/base.html' %}
+
+{% load static %}
+
+{% for serie in series %}
+    <ul>
+        <li>
+            <a href="{% url 'Film:serie_detail' serie.slug %}">{{serie.title}}</a>
+        </li>
+    </ul>
+{% endfor %}

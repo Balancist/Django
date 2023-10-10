@@ -1,0 +1,25 @@
+{% load crispy_forms_tags %}
+
+<h4>تعداد دیدگاه ها: {{comments.count}}</h4>
+<ul>
+	{% for comment in comments %}
+	<li>
+		<span>
+			<p class="h5">{{comment.text}}</p>
+			<small class="h6 text-muted">{{comment.author}} | {{comment.date}}</small>
+		</span>
+	</li>
+	{% endfor %}
+</ul>
+<form method="post" action="{% url 'Quran:add_comment' article.sureh.slug article.ayeh %}">{% csrf_token %}
+	<div class="row">
+		<div class="col-8 mx-auto row h5">
+			<div class="col-8">
+				{{form.text|as_crispy_field}}
+			</div>
+			<div class="col-4 mb-3 mt-auto">
+				<button type="submit" class="btn btn-success">ارسال</button>
+			</div>
+		</div>
+	</div>
+</form>

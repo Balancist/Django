@@ -1,0 +1,23 @@
+{% extends 'home/base.html' %}
+
+{% block head %}
+<title>فیلم</title>
+{% endblock %}
+
+{% block body %}
+{% for film in films %}
+    <ul>
+        <li>
+            <a href="{% url 'Film:film_detail' film.slug %}">{{film.title}}</a>
+        </li>
+    </ul>
+{% endfor %}
+<div class="clearfix pager-button">
+    {% if films.has_previous %}
+    <a class="btn btn-secondery float-right" href="{% url 'Film:film' films.previous_page_number %}">صفحه ی قبل</a>
+    {% endif %}
+    {% if films.has_next %}
+    <a class="btn btn-secondery float-left" href="{% url 'Film:film' films.next_page_number %}">صفحه ی بعد</a>
+    {% endif %}
+</div>
+{% endblock %}

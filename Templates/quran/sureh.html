@@ -1,0 +1,25 @@
+{% extends 'home/base.html' %}
+
+{% load static %}
+
+{% block head %}
+<title>{{sureh.name}}</title>
+{% endblock %}
+
+{% block body %}
+<div class="discription border rounded-2 border-4 border-warning p-3 m-2"><h2 class="text-center">توضیحات</h2>{{sureh.discription}}</div>
+<div class="article border rounded-2 border-4 border-danger p-3 m-5">
+    <h2 class="text-center">مقالات</h2>
+    {% for article in sureh.articles.published %}
+    <ul>
+        <li>
+            <a class="link-dark" href="{% url 'Quran:article' sureh.slug article.ayeh %}">{{sureh}}-{{article.ayeh}}</a>
+        </li>
+    </ul>
+    {% endfor %}
+</div>
+<div class="video border rounded-2 border-4 border-success p-3 m-5">
+    <h2 class="text-center">کلیپ ها</h2>
+    کلیپی موجود نیست
+</div>
+{% endblock %}

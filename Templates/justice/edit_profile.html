@@ -1,0 +1,43 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block head %}
+<title>ویرایش اطلاعات</title>
+{% endblock %}
+
+{% block body %}
+<h3 class="alert alert-warning text-center m-4 mt-2">ویرایش اطلاعات</h3>
+<form class="h5" method="post">
+	{% csrf_token %}
+	<div class="container">
+		<div class="row">
+			<div class="col-4 h5">
+				{{form.username|as_crispy_field}}
+			</div>
+			<div class="col-4">
+				{{form.first_name|as_crispy_field}}
+			</div>
+			<div class="col-4">
+				{{form.last_name|as_crispy_field}}
+			</div>
+			<div class="col-6">
+				{{form.email|as_crispy_field}}
+			</div>
+			<div class="col-6">
+				{{form.phone_number|as_crispy_field}}
+			</div>
+			<div class="col-6">
+				{{form.is_valid|as_crispy_field}}
+			</div>
+			<div class="col-6 password-change">
+				<a href="{% url 'Justice:password_change' %}" class="alert alert-danger">برای تغییر رمز کلیک کنید</a>
+			</div>
+			<hr class="my-3">
+			<div class="text-center">
+				<button type="submit" class="btn btn-outline-warning">ثبت</button>
+			</div>
+		</div>
+	</div>	
+</form>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'home/base.html' %}
+
+{% load static %}
+
+{% block title %}
+{{company.name}}
+{% endblock %}
+
+{% block body %}
+<img src="{{company.logo.url}}">
+<h1>{{company.name}}</h1>
+works from: {{company.year}}<br>
+some of its productions are:
+{% for film in company.films.all %}
+<ul>
+    <li>
+        <a href="{% url 'Film:film_detail' film.slug %}">{{film.title}}</a>
+    </li>
+</ul>
+{% endfor %}
+{% endblock %}

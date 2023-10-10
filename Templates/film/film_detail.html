@@ -1,0 +1,22 @@
+{% extends 'home/base.html' %}
+
+{% load static %}
+
+{% block head %}
+<title>{{film.title}}</title>
+{% endblock %}
+
+{% block body %}
+<img src="{{film.poster.url}}">
+<h1>{{film.title}}</h1>
+Company:
+{% for company in film.company.all %}
+<ul>
+	<li>
+		<a href="{% url 'Film:company_detail' company.slug %}">{{company}}</a>
+	</li>
+</ul>
+{% endfor %}
+Release year: {{film.year}}<br>
+Genre: {{film.genre_to_str}}
+{% endblock %}

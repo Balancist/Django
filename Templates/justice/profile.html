@@ -1,0 +1,67 @@
+{% extends 'home/base.html' %}
+
+{% load static %}
+
+{% block head %}
+<title>حساب</title>
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+	<div class="row">
+		<div class="">
+			<a href="{% url 'Justice:file_complaint' %}" class="filing-btn col-2 py-3 border border-secondary border-2 bg-warning text-center m-2 fas fa-plus h4"> طرح شکایت</a>
+			<a href="{% url 'Justice:logout' %}" class="fas fa-sign-out-alt m-2"></a>
+			<a href="{% url 'Justice:edit_profile' %}" class="fa fa-edit m-2"></a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-body table-responsive">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>کد</th>
+								<th>جرم</th>
+								<th>فوریت</th>
+								<th>تاریخ وقوع</th>
+								<th>مجرم</th>
+								<th>شاکی</th>
+								<th>تاریخ شکایت</th>
+								<th>وضعیت</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for complaint in object_list %}
+							<tr>
+								<td><a href="{% url 'Justice:modify_complaint' complaint.id %}">{{complaint.id}}</a></td>
+								<td>{{complaint.crime_to_str}}</td>
+								<td>{{complaint.urgency}}</td>
+								<td><time>{{complaint.date}}</time></td>
+								<td>{{complaint.culprit_to_str}}</td>
+								<td>{{complaint.complainant}}</td>
+								<td><time>{{complaint.filed}}</time></td>
+								<td>
+									{% if complaint.status == 'Y' %}
+										<span class="badge bg-success p-2 rounded-pill text-dark">رسیدگی شده</span>
+									{% elif complaint.status == 'I' %}
+										<span class="badge bg-warning p-2 rounded-pill text-dark">در حال رسیدگی</span>
+									{% elif complaint.status == 'L' %}
+										<span class="badge bg-primary p-2 rounded-pill text-dark">در صف رسدگی</span>
+									{% else %}
+										<span class="badge bg-secondary p-2 rounded-pill text-dark">بررسی نشده</span>
+									{% endif %}
+									{% if complaint.status != 'Y' %}
+										<a href="{% url 'Justice:close_complaint' complaint.pk %}" class="badge bg-danger p-2 rounded-pill text-dark">حذف</a>
+									{% endif %}
+								</td>
+							</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

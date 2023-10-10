@@ -1,0 +1,8 @@
+<div class="popular text-center py-2">
+	<h4>جنجالی ترین های هفته</h4>
+	{% for article in list %}
+		<div>
+			<a href="{% url 'Quran:article' article.sureh.slug article.ayeh %}" class="h5">{{article.sureh}} - {{article.ayeh}}</a>
+		</div>
+	{% endfor %}
+</div>

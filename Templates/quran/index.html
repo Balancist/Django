@@ -1,0 +1,17 @@
+{% extends 'home/base.html' %}
+{% load tags %}
+
+{% block head %}
+<title>قرآن</title>
+{% endblock %}
+
+{% block body %}
+<h2 class="alert alert-primary mx-4 text-center">سوره ها</h2>
+<div class="sureh-names text-center">
+    {% for sureh in object_list %}
+    <a class="link-dark h3" href="{% url 'Quran:sureh' sureh.slug %}">{{sureh.name}}</a>
+    {% endfor %}
+</div>
+{% popular %}
+{% hot %}
+{% endblock %}

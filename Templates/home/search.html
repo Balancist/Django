@@ -1,0 +1,58 @@
+{% extends 'home/base.html' %}
+
+{% block head %}
+<title>جست و جو</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+	<ul>
+		<div class="text-center alert alert-info text-dark h4">مقالات</div>
+		{% for article in articles %}
+			<li>
+				<a class="h5" href="{% url 'Quran:article' article.sureh.slug article.ayeh %}">{{article.sureh}} - {{article.ayeh}}</a>
+			</li>
+		{% empty %}
+			<div class="badge bg-secondary text-center text-dark h5">چیزی پیدا نشد</div>
+		{% endfor %}
+	</ul>
+	<ul>
+		<div class="text-center alert alert-info text-dark h4">فیلم ها</div>
+		{% for film in films %}
+			<li>
+				<a class="h5" href="{% url 'Film:film_detail' film.slug %}">{{film.title}}</a>
+			</li>
+		{% empty %}
+			<div class="text-muted h5">چیزی پیدا نشد</div>
+		{% endfor %}
+	</ul>
+	<ul>
+		<div class="text-center alert alert-info text-dark h4">فیلم ها</div>
+		{% for film in films %}
+			<li>
+				<a class="h5" href="{% url 'Film:film_detail' film.slug %}">{{film.title}}</a>
+			</li>
+		{% empty %}
+			<div class="text-muted h5">چیزی پیدا نشد</div>
+		{% endfor %}
+	</ul>
+	<ul>
+		<div class="text-center alert alert-info text-dark h4">جرم ها</div>
+		{% for film in object_list %}
+			<li>
+				<a class="h5" href="{% url 'Justice:crime' crime.slug %}">{{crime.name}}</a>
+			</li>
+		{% empty %}
+			<div class="text-muted h5">چیزی پیدا نشد</div>
+		{% endfor %}
+	</ul>
+</div>
+<div class="clearfix pager-button">
+    {% if list.has_previous %}
+    <a class="btn btn-secondery float-right" href="{% url 'Home:search' articles.previous_page_number %}?q={{search}}">صفحه ی قبل</a>
+    {% endif %}
+    {% if list.has_next %}
+    <a class="btn btn-secondery float-left" href="{% url 'Home:search' articles.next_page_number %}?q={{search}}">صفحه ی بعد</a>
+    {% endif %}
+</div>
+{% endblock %}

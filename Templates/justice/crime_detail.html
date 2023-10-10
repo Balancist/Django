@@ -1,0 +1,10 @@
+{% extends 'home/base.html' %}
+
+{% load static %}
+
+<div class="row">
+	{% if crime.field != None %}
+		{% include 'justice/partials/field_loop.html' %}
+	{% endif %}
+	<a href="" class="col-1">{{crime.name}}</a>
+</div>
